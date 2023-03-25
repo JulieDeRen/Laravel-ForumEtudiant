@@ -33,7 +33,7 @@
                     <div class="single-post row">
                         <div class="col-lg-12">
                             <div class="feature-img">
-                                <img class="img-fluid" src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/img/blog/feature-img1.jpg" alt="">
+                                <img class="img-fluid" src="/images/{{$user->photo}}" alt="{{$user->name}}">
                             </div>
                         </div>
                         <div class="col-lg-3  col-md-3">
@@ -49,10 +49,11 @@
                                     <li><a href="#">{{$user->address}}</a></li>
                                     <li><a href="#">{{$user->name}}<i class="ti-user"></i></a></li>
                                     <li><a href="#">{{$user->phone}}<i class="ti-comment"></i></a></li>
+                                    <li><a href="#">{{$user->birthday}}<i class="ti-calendar"></i></a></li>
                                     @isset( $user->userHasCity->name)
                                         <li><a href="#">{{ $user->userHasCity->name}}<i class="ti-eye"></i></a></li>
                                     @endisset
-                                    <li><a href="#">{{$user->birthday}}<i class="ti-calendar"></i></a></li>
+                                   
                                 </ul>
                                 <ul class="social-links">
                                     <li><a href="#"><i class="ti-facebook"></i></a></li>
@@ -168,7 +169,7 @@
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/img/blog/author.png" alt="">
+                            <img class="author_img rounded-circle" src="/images/{{$user->photo}}" alt="{{$user->photo}}">
                             <h4>{{$user->name}}</h4>
                             <p>{{$user->email}}</p>
                             <div class="social_icon">

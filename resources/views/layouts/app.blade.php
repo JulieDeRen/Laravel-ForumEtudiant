@@ -7,18 +7,18 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="icon" href="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/img/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
     <title>{{ config('app.name') }}</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/css/flaticon.css" />
-    <link rel="stylesheet" href="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/vendors/owl-carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/vendors/nice-select/css/nice-select.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="/assets/css/flaticon.css" />
+    <link rel="stylesheet" href="/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/assets/vendors/nice-select/css/nice-select.css" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <!-- main css -->
-    <link rel="stylesheet" href="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
 
   <body>
@@ -48,7 +48,7 @@
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <a class="navbar-brand" href="{{route('index')}}">
-              <img class="logo-2" src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/img/logo2.png" alt="" />
+              <img class="logo-2" src="/assets/img/logo2.png" alt="" />
             </a>
             <button
               class="navbar-toggler"
@@ -229,20 +229,20 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/jquery-3.2.1.min.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/popper.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/bootstrap.min.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/vendors/nice-select/js/jquery.nice-select.min.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/owl-carousel-thumb.min.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/jquery.ajaxchimp.min.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/jquery.validate.min.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/mail-script.js"></script>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="/assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="/assets/js/owl-carousel-thumb.min.js"></script>
+    <script src="/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/assets/js/jquery.validate.min.js"></script>
+    <script src="/assets/js/mail-script.js"></script>
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/gmaps.min.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/contact.js"></script>
-    <script src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/js/theme.js"></script>
+    <script src="/assets/js/gmaps.min.js"></script>
+    <script src="/assets/js/contact.js"></script>
+    <script src="/assets/js/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"  crossorigin="anonymous"></script>
 
   </body>

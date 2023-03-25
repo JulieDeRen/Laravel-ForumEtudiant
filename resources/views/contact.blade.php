@@ -3,7 +3,7 @@
 @section('content')
 
     <!--================Home Banner Area =================-->
-    <section class="banner_area">
+    <!--<section class="banner_area">
       <div class="banner_inner d-flex align-items-center">
         <div class="overlay"></div>
         <div class="container">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section>-->
     <!--================End Home Banner Area =================-->
 
     <!--================Contact Area =================-->

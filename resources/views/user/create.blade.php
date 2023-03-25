@@ -32,15 +32,31 @@
                         <div class="card-header">
                             Formulaire
                         </div>
-                        <div class="card-body">   
+                        <div class="card-body">  
+                            @if(session('success'))
+                                <div class="alert alert-success alert-dismissible fade show">
+                                    {{session('success')}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif 
                             <div class="control-group col-12">
                                 <label for="name">Nom</label>
                                 <input type="text" id="name" name="name" class="form-control" required>
+                                @if ($errors->has('name'))
+                                <div class="text-danger mt-2">
+                                    {{ $errors->first('name') }}
+                                </div>                                
+                            @endif
                             </div>
                             <div class="row-city">
                                 <div class="control-group col-6">
                                     <label for="address">Adresse</label>
                                     <input type="text" id="address" name="address" class="form-control" required>
+                                    @if ($errors->has('address'))
+                                        <div class="text-danger mt-2">
+                                            {{ $errors->first('address') }}
+                                        </div>                                
+                                    @endif
                                 </div>
                                 <div class="control-group col-6 col-city">
                                     <div class="">
@@ -56,19 +72,44 @@
                             <div class="control-group col-12">
                                 <label for="phone">Téléphone</label>
                                 <input type="phone" id="phone" name="phone" class="form-control" required>
+                                @if ($errors->has('phone'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('phone') }}
+                                    </div>                                
+                                @endif
                             </div>
                             <div class="control-group col-12">
                                 <label for="email">Courriel</label>
                                 <input type="text" id="email" name="email" class="form-control" required>
+                                @if ($errors->has('email'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('email') }}
+                                    </div>                                
+                                @endif
                             </div>
                             <div class="control-group col-12">
                                 <label for="birthday">Date de naissance</label>
                                 <input type="date" id="birthday" name="birthday" class="form-control" required>
+                                @if ($errors->has('birthday'))
+                                    <div class="text-danger mt-2">
+                                        {{ $errors->first('birthday') }}
+                                    </div>                                
+                                @endif
                             </div>
                             <div class="control-group col-12">
                                 <label for="password">Mot de passe</label>
                                 <input type="text" id="password" name="password" class="form-control" required>
                             </div>
+                            <!--<div class="control-group col-6 col-city">
+                                <div class="">
+                                    <label for="city_id">Catégorie</label>
+                                </div>
+                                <select name="types_id" id="types">
+                                    @foreach($types as $type)
+                                        <option value="{{$type->id}}" >{{ $type->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>-->
                         </div>
 
                         

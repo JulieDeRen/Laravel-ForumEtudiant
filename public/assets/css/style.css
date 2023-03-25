@@ -1649,6 +1649,12 @@ button:focus {
 .tags .tag_btn+.tag_btn {
   margin-left: 2px;
 }
+.blog_area .feature-img img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
 
 /*========= blog_categorie_area css ===========*/
 .blog_categorie_area {
@@ -1757,7 +1763,8 @@ button:focus {
 }
 
 .blog_post img {
-  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .blog_details {
@@ -1796,6 +1803,10 @@ button:focus {
 .blog_right_sidebar {
   background: #f1f9ff;
   padding: 30px;
+  top: 80px;
+}
+.blog_right_sidebar:not(.fiche){
+  position: sticky;
 }
 
 @media (max-width: 991px) {
@@ -1893,6 +1904,11 @@ button:focus {
 
 .blog_right_sidebar .author_widget .social_icon a:hover {
   color: #fdc632;
+}
+.blog_right_sidebar .author_widget img{
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
 }
 
 .blog_right_sidebar .popular_post_widget .post_item .media-body {

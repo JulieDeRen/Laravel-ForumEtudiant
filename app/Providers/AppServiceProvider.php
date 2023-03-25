@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        //ajouté pour la route vers le style et le javascript
+        define('path', 'http://localhost:8000/');
     }
 }
