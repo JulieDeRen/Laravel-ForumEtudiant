@@ -50,12 +50,12 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="blog_post">
-                                    <img src="images/{{$blog->blogphoto}}" alt="{{$blog->title}}">
+                                    <img src="/uploads/images/{{$blog->blogphoto}}" alt="{{$blog->title}}">
                                     <div class="blog_details">
-                                        <a href="single-blog.html">
+                                        <a href="{{route('blog.show', $blog->id)}}">
                                             <h2>{{$blog->title}}</h2>
                                         </a>
-                                        <p>{{$blog->content}}</p>
+                                        <p>{!!$blog->content!!}</p>
                                         <a href="{{route('blog.show', $blog->id)}}" class="blog_btn">Voir plus</a>
                                     </div>
                                 </div>

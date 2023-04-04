@@ -5578,12 +5578,14 @@ button.close {
 }
 
 .modal-open {
-    overflow: hidden
+    overflow: hidden;
+    z-index: 9990;
 }
 
 .modal-open .modal {
     overflow-x: hidden;
-    overflow-y: auto
+    overflow-y: auto;
+    z-index: 9990;
 }
 
 .modal {
@@ -5592,17 +5594,19 @@ button.close {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1050;
+    /*z-index: 1050;*/
     display: none;
     overflow: hidden;
-    outline: 0
+    outline: 0;
+    z-index: 999999;
 }
 
 .modal-dialog {
     position: relative;
     width: auto;
     margin: .5rem;
-    pointer-events: none
+    pointer-events: none;
+    z-index: 999;
 }
 
 .modal.fade .modal-dialog {
@@ -5660,7 +5664,7 @@ button.close {
     bottom: 0;
     left: 0;
     z-index: 1040;
-    background-color: #000
+    background-color: #000;
 }
 
 .modal-backdrop.fade {
@@ -5668,7 +5672,7 @@ button.close {
 }
 
 .modal-backdrop.show {
-    opacity: .5
+    opacity: .5;
 }
 
 .modal-header {

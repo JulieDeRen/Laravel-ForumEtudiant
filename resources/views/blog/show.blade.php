@@ -32,7 +32,7 @@
                     <div class="single-post row">
                         <div class="col-lg-12">
                             <div class="feature-img">
-                                <img class="img-fluid" src="/images/{{$blog->blogphoto}}" alt="">
+                                <img class="img-fluid" src="/uploads/images/{{$blog->blogphoto}}" alt="">
                             </div>
                         </div>
                         <div class="col-lg-3  col-md-3">
@@ -57,7 +57,7 @@
                         <div class="col-lg-9 col-md-9 blog_details">
                             <h2>{{$blog->title}}</h2>
                             <p class="excert">
-                               {{$blog->content}}
+                               {!!$blog->content!!}
                             </p>
                         </div>
                         <div class="col-lg-12">
@@ -249,6 +249,19 @@
                 <div class="col-lg-4">
                         <div class="blog_right_sidebar fiche">
                             <aside class="single_sidebar_widget search_widget">
+                            @if (Auth::user()->id == $blog->users_id)
+                            <div class="container flex-row">
+                                <div>
+                                    <a href="{{route('blog.edit', $blog->id)}}" class="btn btn-success">Modifier</a>
+                                </div>
+                                <!-- Button trigger modal -->
+                                <div>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Effacer
+                                    </button>
+                                </div>
+                            </div>
+                            @endif
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search Posts">
                                     <span class="input-group-btn">
@@ -258,7 +271,7 @@
                                 <div class="br"></div>
                             </aside>
                             <aside class="single_sidebar_widget author_widget">
-                                <img class="author_img rounded-circle" src="assets/img/blog/author.png" alt="">
+                                <img class="author_img rounded-circle" src="/uploads/photos_etudiants/{{$blog->userphoto}}" alt="">
                                 <h4>{{$blog->name}}</h4>
                                 <p>{{$blog->email}}</p>
                                 <div class="social_icon">
@@ -371,6 +384,30 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Effacer l'article</h5>
+                        <span class="material-symbols-outlined" data-bs-dismiss="modal" aria-label="Close">
+                            close
+                            </span>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir effacer l'article : {{$blog->title}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <form action="{{route('blog.delete', $blog->id)}}" method = "post">
+                        @csrf
+                        @method('delete')
+
+                            <input type="submit" class="btn btn-danger" value="Effacer">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!--================Blog Area =================-->
 
    @endsection

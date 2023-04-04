@@ -3,6 +3,7 @@
 @section('content')
 
  <!--================Home Banner Area =================-->
+ @foreach($users as $user)
  <section class="banner_area">
       <div class="banner_inner d-flex align-items-center">
         <div class="overlay"></div>
@@ -13,7 +14,7 @@
                 <h2>{{$user->name}}</h2>
                 <div class="page_link">
                   <a href="{{route('index')}}">Accueil</a>
-                  <a href="{{route('user.index')}}">Finissant</a>
+                  <a href="{{route('student.index')}}">Finissant</a>
                   <a href="{{route('student.show', $user->users_id)}}">{{$user->name}}</a>
                 </div>
 
@@ -33,7 +34,7 @@
                     <div class="single-post row">
                         <div class="col-lg-12">
                             <div class="feature-img">
-                                <img class="img-fluid" src="images/{{$user->photo}}" alt="{{$user->name}}">
+                                <img class="img-fluid" src="/uploads/photos_etudiants/{{$user->photo}}" alt="{{$user->name}}">
                             </div>
                         </div>
                         <div class="col-lg-3  col-md-3">
@@ -44,6 +45,7 @@
                                     <a href="#">Politics,</a>
                                     <a href="#">Lifestyle</a>
                                 </div>-->
+
                                 <ul class="blog_meta list">
                                     <li><a href="#">{{$user->email}}</a></li>
                                     <li><a href="#">{{$user->address}}</a></li>
@@ -65,23 +67,7 @@
                         <div class="col-lg-9 col-md-9 blog_details">
                             <h2>{{$user->name}}</h2>
                             <p class="excert">
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand
-                                why you should have to spend money on boot camp when you can get the MCSE study
-                                materials yourself at a fraction.
-                            </p>
-                            <p>
-                                Boot camps have its supporters and its detractors. Some people do not understand why
-                                you should have to spend money on boot camp when you can get the MCSE study materials
-                                yourself at a fraction of the camp price. However, who has the willpower to actually
-                                sit through a self-imposed MCSE training. who has the willpower to actually sit through
-                                a self-imposed
-                            </p>
-                            <p>
-                                Boot camps have its supporters and its detractors. Some people do not understand why
-                                you should have to spend money on boot camp when you can get the MCSE study materials
-                                yourself at a fraction of the camp price. However, who has the willpower to actually
-                                sit through a self-imposed MCSE training. who has the willpower to actually sit through
-                                a self-imposed
+                               {!!$user->presentation!!}
                             </p>
                         </div>
                         <!--<div class="col-lg-12">
@@ -121,43 +107,19 @@
                         <aside class="single_sidebar_widget search_widget">
                              <!--================== Boutons =======================--->
 
+                @if (Auth::user()->id == $user->id)
                 <div class="container flex-row">
                     <div>
-                        <a href="{{route('user.edit', $user->users_id)}}" class="btn btn-success">Modifier</a>
+                        <a href="{{route('student.edit', $user->users_id)}}" class="btn btn-success">Modifier</a>
                     </div>
                     <!-- Button trigger modal -->
                     <div>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Effacer
                         </button>
-
-                    <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Effacer l'utilisateur</h5>
-                                        <span class="material-symbols-outlined" data-bs-dismiss="modal" aria-label="Close">
-                                            close
-                                            </span>
-                                    </div>
-                                    <div class="modal-body">
-                                        Êtes-vous sûr de vouloir effacer l'utilisateur : {{$user->name}}
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                        <form action="{{route('user.delete', $user->users_id)}}" method = "post">
-                                        @csrf
-                                        @method('delete')
-
-                                            <input type="submit" class="btn btn-danger" value="Effacer">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+                @endif
                 <!-- Fin bouton -->
                             <!--<div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search Posts">
@@ -168,7 +130,7 @@
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="https://e2295160.webdev.cmaisonneuve.qc.ca/Maisonneuve2295160/public/assets/img/blog/author.png" alt="">
+                            <img class="author_img rounded-circle" src="/uploads/photos_etudiants/{{$user->photo}}" alt="">
                             <h4>{{$user->name}}</h4>
                             <p>{{$user->email}}</p>
                             <div class="social_icon">
@@ -466,12 +428,38 @@
                             </div>
                             <a href="#" class="primary-btn">Publier le message</a>
                         </form>
+                        @endforeach
                     </div>
                 </div>
             </div>
               
         </div>
     </section>
+      <!-- Modal pour effacer-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Effacer l'utilisateur</h5>
+                        <span class="material-symbols-outlined" data-bs-dismiss="modal" aria-label="Close">
+                            close
+                            </span>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir effacer l'utilisateur : {{$user->name}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <form action="{{route('student.delete', $user->users_id)}}" method = "post">
+                        @csrf
+                        @method('delete')
+
+                            <input type="submit" class="btn btn-danger" value="Effacer">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!--================Blog Area =================-->
 
 

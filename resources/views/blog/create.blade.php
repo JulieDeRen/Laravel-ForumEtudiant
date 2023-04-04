@@ -25,7 +25,7 @@
 <div class="container section_gap_top section_gap_bottom">
         
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="card">
                     <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data">
                     @csrf

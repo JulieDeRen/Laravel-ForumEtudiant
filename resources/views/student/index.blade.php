@@ -13,7 +13,7 @@
                 <h2>Finissants</h2>
                 <div class="page_link">
                   <a href="/">Accueil</a>
-                  <a href="/user">Finissants</a>
+                  <a href="/student">Finissants</a>
                 </div>
               </div>
             </div>
@@ -25,13 +25,13 @@
 
 <div class="container section_gap_top section_gap_bottom">
       <h2>Inscrivez-vous pour vous afficher.</h2>
-      <a href="{{route('user.create')}}" class="btn btn-success">Je m'inscris</a>
+      <a href="{{route('student.create')}}" class="btn btn-success">Je m'inscris</a>
 
       <div class="row justify-content-center d-flex align-items-center section_gap_top">
         @foreach($users as $user)
-          <div class="col-lg-3 col-md-6 col-sm-12 single-trainer" onclick="location.href=`{{route('user.show', $user->id)}}`">
+          <div class="col-lg-3 col-md-6 col-sm-12 single-trainer" onclick="location.href=`{{route('student.show', $user->users_id)}}`">
             <div class="thumb d-flex justify-content-sm-center">
-              <img class="img-fluid" src="assets/img/trainer/t1.jpg" alt="" />
+              <img class="img-fluid" src="/uploads/photos_etudiants/{{$user->photo}}" alt="" />
             </div>
             <div class="meta-text text-sm-center">
               <h4>{{ $user->name  ?? ''}}</h4>

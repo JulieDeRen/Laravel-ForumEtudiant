@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/assets/vendors/nice-select/css/nice-select.css" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- Entre en conflit avec cette version de bootstrap du template <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
     <!-- main css -->
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
@@ -107,16 +108,17 @@
                   >
                   <ul class="dropdown-menu">
                     <li class="nav-item">
-                      <a class="nav-link" href="{{route('user.create')}}">Inscription</a>
+                      <a class="nav-link" href="{{route('student.create')}}">Inscription</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{route('user.index')}}"
+                      <a class="nav-link" href="{{route('student.index')}}"
                         >Liste des finissants</a
                       >
                     </li>
                   </ul>
                 </li>
-                    
+                @guest
+                @else
                 <li class="nav-item submenu dropdown">
                   <a
                     href="#"
@@ -151,19 +153,29 @@
                   >
                   <ul class="dropdown-menu">
                     <li class="nav-item">
-                      <a class="nav-link" href="{{route('blog.index')}}">Consulter</a>
+                      <a class="nav-link" href="{{route('document.index')}}">Consulter</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{route('blog.index')}}"
+                      <a class="nav-link" href="{{route('document.create')}}"
                         >Déposer</a
                       >
                     </li>
                   </ul>
                 </li>
+                @endguest
 
                 <li class="nav-item">
                   <a class="nav-link" href="{{route('contact')}}">Contact</a>
                 </li>
+                @guest
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('login')}}">Connexion</a>
+                </li>
+                @else
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('logout')}}">Déconnexion</a>
+                </li>
+                @endguest
                 <li class="nav-item">
                   <a href="#" class="nav-link search" id="search">
                     <i class="ti-search"></i>
@@ -290,6 +302,10 @@
 <script src="/assets/js/contact.js"></script>
 <script src="/assets/js/theme.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"  crossorigin="anonymous"></script>
+<!--
+  Entrent en conflit avec le bootstrap de ce template <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
 
 </body>
 </html>

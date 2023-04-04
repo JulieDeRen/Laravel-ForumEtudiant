@@ -63,7 +63,7 @@
               <span class="icon-bar"></span>
             </button>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div
+               <div
               class="collapse navbar-collapse offset"
               id="navbarSupportedContent"
             >
@@ -107,18 +107,74 @@
                   >
                   <ul class="dropdown-menu">
                     <li class="nav-item">
-                      <a class="nav-link" href="{{route('user.create')}}">Inscription</a>
+                      <a class="nav-link" href="{{route('student.create')}}">Inscription</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{route('user.index')}}"
+                      <a class="nav-link" href="{{route('student.index')}}"
                         >Liste des finissants</a
                       >
                     </li>
                   </ul>
                 </li>
+                @guest
+                @else
+                <li class="nav-item submenu dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Forum</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{route('blog.index')}}">Les publications</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{route('blog.create')}}"
+                        >Rédiger un article</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item submenu dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Documents</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{route('document.index')}}">Consulter</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{route('document.create')}}"
+                        >Déposer</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                @endguest
+
                 <li class="nav-item">
                   <a class="nav-link" href="{{route('contact')}}">Contact</a>
                 </li>
+                @guest
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('login')}}">Connexion</a>
+                </li>
+                @else
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('logout')}}">Déconnexion</a>
+                </li>
+                @endguest
                 <li class="nav-item">
                   <a href="#" class="nav-link search" id="search">
                     <i class="ti-search"></i>

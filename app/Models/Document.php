@@ -10,7 +10,8 @@ class Document extends Model
     use HasFactory;
     protected $fillable = [
         'path',
-        'date',
-        'user_id',
+        'description',
+        'users_id',
+        'category_id',
     ];
 }

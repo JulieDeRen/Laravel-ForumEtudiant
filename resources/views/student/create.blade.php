@@ -12,7 +12,7 @@
                 <h2>Inscription</h2>
                 <div class="page_link">
                   <a href="/">Accueil</a>
-                  <a href="/user">Finissants</a>
+                  <a href="/student">Finissants</a>
                   <a href="/create">Inscription</a>
                 </div>
               </div>

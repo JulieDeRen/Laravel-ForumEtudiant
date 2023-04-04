@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\Type;
 use App\Models\User;
+use App\Models\Degree;
+use App\Models\Program;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -70,7 +73,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
         // return redirect()->back()->withSuccess();
-        return redirect(route('user.show', $user -> id));
+        return redirect(route('user.show', $user -> users_id));
     }
 
     /**
@@ -87,14 +90,35 @@ class UserController extends Controller
 
     public function showstudent(User $user)
     {
-        $student = User::select()
+
+        $students = User::select('*')
         -> join('students', 'users.id', '=', 'students.users_id')
         ->where('students.users_id', $user['id'])
         ->get();
-        // $user = $student;
-        // return $user->birthday;
+        
+        foreach($students as $student){
+            // Traiter sauts de lignes
+            // Ref : https://www.php.net/manual/en/function.str-replace.php
+            $str     = $student->presentation;
+            $order   = array("\r\n", "\n", "\r");
+            $replace = '<br />';
 
-        return view('user.show', ['user' => $user]);
+            // Processes \r\n's first so they aren't converted twice.
+            $newstr = str_replace($order, $replace, $str);
+            $student['presentation'] = $newstr;
+            if($student['photo']==null){
+                $student['photo']='testimonials-2.jpg';
+            }
+        }
+
+        
+
+        $users = $students;
+        
+        // $student est un tableau d'objet donc il faut itérer dans la vue***
+
+
+        return view('student.show', ['users' => $users]);
     }
 
     /**
@@ -105,9 +129,20 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $student = Student::select('*')
+        -> join('users', 'users.id', '=', 'students.users_id')
+        ->where('students.users_id', $user['id'])
+        ->get();
+        $user = $student;
+        $degree=Degree::all();
+        $program=Program::all();
+        $type=Type::all();
         $city=City::all();
-        return view('user.edit', ['user'=>$user,
-                                    'cities'=>$city]);
+        return view('student.edit', ['users'=>$user,
+                                    'cities' => $city,
+                                    'types'=>$type,
+                                    'degrees'=>$degree,
+                                    'programs'=>$program]);
     }
 
     /**
@@ -119,6 +154,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        // ** Important que le formulaire soit de type multi encrypted */
+        // return $request->has('image');
+        $request->validate([
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+        ]);
+
+        $imageName = time().'.'.$request->image->extension();
+        
+        // Public Folder
+        $request->image->move(public_path('uploads/photos_etudiants'), $imageName);
+        // $request->image->storeAs('images', $imageName);
+        $request['photo']=$imageName;
+    
         $user->update([
             'name' => $request->name,
             'address' => $request ->address,
@@ -126,9 +174,36 @@ class UserController extends Controller
             'phone' => $request ->phone,
             'email' => $request ->email,
             'password' => $request ->password,
-            'city_id' => $request ->city_id
+            'city_id' => $request ->city_id,
+            'photo'=> $request ->photo,
         ]);
-        return redirect(route('user.show', $user->id))->withSuccess('Article mis à jour.');
+
+        // Auth::User()->id
+        /*
+        $student= Student::select('*')
+        ->where('users_id', $user->id);
+        return $student;
+        */
+        // $data = json_decode($student, true);
+        // return $data[24];
+
+        /*
+        $results = DB::table('students')->where('users_id', $user->id)->get();
+        $response = new Response();
+        $response->setContent(json_encode($results));
+        */
+        // return $student;
+        $student= Student::find($user->id);
+        // $student = Student::select('SELECT * FROM students WHERE `students.users_id`= ' . $user->id);
+        
+        $student->update([
+            'birthday'=> $request->birthday,
+            'presentation'=> $request->presentation,
+            'programs_id'=> $request->programs_id,
+        ]);
+        
+        
+        return redirect(route('student.show', $user->id))->withSuccess('Article mis à jour.');
     }
 
     /**

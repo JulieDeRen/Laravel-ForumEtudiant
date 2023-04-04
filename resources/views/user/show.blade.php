@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.user')presentation
 @section('title', 'Blog List')
 @section('content')
 
@@ -33,7 +33,7 @@
                     <div class="single-post row">
                         <div class="col-lg-12">
                             <div class="feature-img">
-                                <img class="img-fluid" src="/images/{{$user->photo}}" alt="{{$user->name}}">
+                                <img class="img-fluid" src="/uploads/photos_etudiants/{{$user->photo}}" alt="{{$user->name}}">
                             </div>
                         </div>
                         <div class="col-lg-3  col-md-3">
@@ -66,7 +66,7 @@
                         <div class="col-lg-9 col-md-9 blog_details">
                             <h2>{{$user->name}}</h2>
                             <p class="excert">
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand
+                               { MCSE boot camps have its supporters and its detractors. Some people do not understand
                                 why you should have to spend money on boot camp when you can get the MCSE study
                                 materials yourself at a fraction.
                             </p>
@@ -82,7 +82,7 @@
                                 you should have to spend money on boot camp when you can get the MCSE study materials
                                 yourself at a fraction of the camp price. However, who has the willpower to actually
                                 sit through a self-imposed MCSE training. who has the willpower to actually sit through
-                                a self-imposed
+                                a self-imposed}
                             </p>
                         </div>
                         <!--<div class="col-lg-12">
@@ -124,7 +124,7 @@
 
                 <div class="container flex-row">
                     <div>
-                        <a href="{{route('user.edit', $user->id)}}" class="btn btn-success">Modifier</a>
+                        <a href="{{route('user.edit', $user->users_id)}}" class="btn btn-success">Modifier</a>
                     </div>
                     <!-- Button trigger modal -->
                     <div>
@@ -169,7 +169,7 @@
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="/images/{{$user->photo}}" alt="{{$user->photo}}">
+                            <img class="author_img rounded-circle" src="/uploads/photos_etudiants/{{$user->photo}}" alt="{{$user->photo}}">
                             <h4>{{$user->name}}</h4>
                             <p>{{$user->email}}</p>
                             <div class="social_icon">

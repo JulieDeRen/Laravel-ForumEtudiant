@@ -23,7 +23,18 @@ class StudentController extends Controller
         // Si on veut juste 1 $blog=BlogPost::find(1);
         // return $blog[1];
         // tester forelse tableau vide @empty   $blog = [];
-        $user=Student::all();
+
+        $user = Student::select('*')
+        -> join('users', 'users.id', '=', 'students.users_id')
+        ->get();
+        foreach($user as $aUser){
+            if(!isset($aUser->photo)){
+                if($aUser->photo == null){
+                    $aUser->photo = "t4.jpg";
+                }
+            }
+        }
+        
         return view('student.index', ['users' => $user]);
     }
 
@@ -64,7 +75,7 @@ class StudentController extends Controller
         $imageName = time().'.'.$request->image->extension();
         
         // Public Folder
-        $request->image->move(public_path('images'), $imageName);
+        $request->image->move(public_path('uploads/photos_etudiants'), $imageName);
         // $request->image->storeAs('images', $imageName);
         $request['photo']=$imageName;
 
@@ -117,11 +128,13 @@ class StudentController extends Controller
         ]);
 
         $student->save();
+        // Auth::login($student);
         
         // return redirect()->back()->withSuccess();
-        return redirect(route('student.show', $user -> id));
-    }
 
+        // *** Redirige vers Controlleur User ***
+        return redirect(route('student.show', $request -> users_id));
+    }
 
     // ****** Show is redirect to user controller *****
 
@@ -131,12 +144,6 @@ class StudentController extends Controller
      * @param  \App\Models\BlogPost  $blogPost
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $user)
-    {
-        $city=City::all();
-        return view('student.edit', ['user'=>$user,
-                                    'cities'=>$city]);
-    }
 
     /**
      * Update the specified resource in storage.
