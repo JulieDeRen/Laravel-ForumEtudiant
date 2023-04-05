@@ -241,7 +241,7 @@ class UserController extends Controller
      
         Auth::login($user);
        
-        return redirect()->intended(route('user.index'));
+        return redirect()->intended(route('student.index'));
 
         // return  $credentials;
     }

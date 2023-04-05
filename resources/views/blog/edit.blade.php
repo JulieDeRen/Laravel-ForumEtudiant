@@ -27,9 +27,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data">
                     @csrf
-                    @foreach($blogs as $blog)
+                    @method('PUT')
                         <div class="card-header">
                             Formulaire
                         </div>
@@ -72,7 +72,7 @@
                             </div>
                             <div class="row-city">
                                 <div class="control-group col-12">
-                                    <label for = "photo" class="col-12">Image</label>
+                                    <label for = "image" class="col-12">Image</label>
                                         @if ($message = Session::get('success'))
                                             <div class="alert alert-success alert-block">
                                                 <strong>{{$message}}</strong>
@@ -89,7 +89,6 @@
                         <div class="card-footer">
                             <input type="submit" class="btn btn-success" value="Publier">
                         </div>
-                    @endforeach
                     </form>
                 </div>
             </div>

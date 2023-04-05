@@ -36,10 +36,10 @@ Route::get('/course-details', [BlogController::class, 'courseDetails'])->name('c
 Route::get('/courses', [BlogController::class, 'courses'])->name('courses');
 Route::get('/elements', [BlogController::class, 'elements'])->name('elements');
 Route::get('/single-blog', [BlogController::class, 'singleBlog'])->name('single-blog');
-Route::get('/blog-edit/{user}', [BlogController::class, 'edit'])->name('blog.edit')->middleware('auth');
+Route::get('/blog-edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit')->middleware('auth');
 // Put pour update
-Route::put('/blog-edit/{user}', [BlogController::class, 'update'])->name('blog.update')->middleware('auth');
-Route::delete('/blog-edit/{user}', [BlogController::class, 'destroy'])->name('blog.delete')->middleware('auth');
+Route::put('/blog-edit/{blog}', [BlogController::class, 'update'])->name('blog.update')->middleware('auth');
+Route::delete('/blog-edit/{blog}', [BlogController::class, 'destroy'])->name('blog.delete')->middleware('auth');
 
 
 /* ------ UserController ------ */
