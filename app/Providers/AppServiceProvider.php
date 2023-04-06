@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,7 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrap();  
         //ajouté pour la route vers le style et le javascript
-        define('path', 'http://localhost:8000/');
+        // define('path', 'http://localhost:8000/');
     }
 }

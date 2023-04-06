@@ -42,7 +42,7 @@
           <tbody>
             @foreach($documents as $document)
             <tr>
-              <th scope="row"><a href="storage/documents/{{$document->path}}" download>{{$document->path}}</a></th>
+              <th scope="row"><a href="/storage/documents/{{$document->path}}" download>{{$document->path}}</a></th>
               <td>{{$document->description}}</td>
               <td>{{$document->name}}</td>
               <td>{{$document->category}}</td>

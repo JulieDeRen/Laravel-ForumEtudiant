@@ -23,7 +23,6 @@ class DocumentController extends BaseController
         -> join('users', 'users.id', '=', 'documents.users_id')
         -> join('categories', 'categories.id', '=', 'documents.category_id')
         ->get();
-
         return view('document/document', ['documents' => $document]);
     }
     public function create()
@@ -93,9 +92,16 @@ class DocumentController extends BaseController
     
     public function destroy(Document $document)
     {
-        // return $request;
-        $document->delete();
+
+        $document->delete($document->id);
         //BlogPost::destroy($blogPost);
         return redirect(route('document.index'));
+    }
+
+    public function link(Document $document) {    
+        $target = '/home/public_html/storage/app/public';
+        $shortcut = '/home/public_html/public/storage';
+        symlink($target, $shortcut);
+        return $target;
     }
 }

@@ -109,6 +109,9 @@ Route::get('/edit-document/{document}', [DocumentController::class, 'edit'])->na
 Route::put('/edit-document/{document}', [DocumentController::class, 'update'])->name('document.update')->middleware('auth');
 Route::delete('/document/{document}', [DocumentController::class, 'destroy'])->name('document.delete')->middleware('auth');
 
+Route::get('/link', [DocumentController::class, 'link'])->name('document.link');
+
+
 
 
 

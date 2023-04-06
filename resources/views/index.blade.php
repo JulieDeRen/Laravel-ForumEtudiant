@@ -8,7 +8,7 @@
       <div class="container" id="hero-carte-3">
           <div class="row">
             <div class="col-lg-4 col-md-6">
-              <div class="single_feature" onclick="location.href='./user'">
+              <div class="single_feature" onclick="location.href='./student'">
                 <div class="icon"><span class="flaticon-student"></span></div>
                 <div class="desc">
                   <h4 class="mt-3 mb-2">Finissants</h4>
